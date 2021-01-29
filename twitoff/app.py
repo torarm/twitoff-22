@@ -2,9 +2,9 @@
 
 from os import getenv
 from flask import Flask, render_template, request
-from .models import DB, User, Tweet
-from .twitter import add_or_update_user, update_all_users
-from .predict import predict_user
+from twitoff.models import DB, User, Tweet
+from twitoff.twitter import add_or_update_user, update_all_users
+from twitoff.predict import predict_user
 
 def create_app():
     app = Flask(__name__) # name is telling it to use the directory we r in basically

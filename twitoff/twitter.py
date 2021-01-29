@@ -3,7 +3,7 @@
 from os import getenv
 import tweepy # allows us to interact w. twitter
 import spacy # vectorizes the tweets
-from .models import DB, Tweet, User
+from twitoff.models import DB, Tweet, User
 from sqlalchemy.sql import exists, text
 
 TWITTER_API_KEY = getenv("TWITTER_API_KEY")

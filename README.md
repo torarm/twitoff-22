@@ -13,7 +13,7 @@ Flask web application to compare twitter users.
 
 - Procfile:
 
-  web gunicorn --chdir twitoff __ init __:APP
+  web gunicorn --chdir twitoff __init__:APP
 
 - in requirements.txt:
 

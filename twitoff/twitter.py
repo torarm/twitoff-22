@@ -3,6 +3,7 @@
 from os import getenv
 import tweepy # allows us to interact w. twitter
 import spacy # vectorizes the tweets
+import en_core_web_sm
 from twitoff.models import DB, Tweet, User
 from sqlalchemy.sql import exists, text
 
@@ -12,7 +13,7 @@ TWITTER_API_KEY_SECRET = getenv("TWITTER_API_KEY_SECRET")
 TWITTER_AUTH = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_KEY_SECRET)
 TWITTER = tweepy.API(TWITTER_AUTH)
 
-nlp = spacy.load('my_model')
+nlp = en_core_web_sm.load('my_model')
 def vectorize_tweet(tweet_text):
     return nlp(tweet_text).vector
 

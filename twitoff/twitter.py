@@ -13,7 +13,7 @@ TWITTER_API_KEY_SECRET = getenv("TWITTER_API_KEY_SECRET")
 TWITTER_AUTH = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_KEY_SECRET)
 TWITTER = tweepy.API(TWITTER_AUTH)
 
-nlp = en_core_web_sm.load('my_model')
+nlp = en_core_web_sm.load()
 def vectorize_tweet(tweet_text):
     return nlp(tweet_text).vector
 

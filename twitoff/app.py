@@ -2,9 +2,11 @@
 
 from os import getenv
 from flask import Flask, render_template, request
-from twitoff.models import DB, User, Tweet
+from twitoff.models import DB
 from twitoff.twitter import add_or_update_user, update_all_users
 from twitoff.predict import predict_user
+from flask_sqlalchemy import SQLAlchemy
+
 
 def create_app():
     app = Flask(__name__) # name is telling it to use the directory we r in basically
@@ -13,6 +15,10 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     DB.init_app(app)
+    from twitoff.models import User, Tweet
+    
+    DB.drop_all(app=app)
+    DB.create_all(app=app)
 
     @app.route("/") # this is an endpoint. function below is ran whenever we go to path
     def root():
